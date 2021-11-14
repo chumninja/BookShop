@@ -12,6 +12,6 @@ namespace BookShop.Data
         {
             this.Configuration.LazyLoadingEnabled = false;// khi ma ta include bang cha thi no se ko tu include ra bang con
         }
-        public DBSet<Menu>
+        public DbSet<Menu>
     }
 }
