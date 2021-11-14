@@ -55,9 +55,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BookShopDBConText.cs" />
+    <Compile Include="Infastructure\DBFactory.cs" />
+    <Compile Include="Infastructure\Disposable.cs" />
     <Compile Include="Infastructure\IDBFactory.cs" />
     <Compile Include="Infastructure\IRepository.cs" />
     <Compile Include="Infastructure\IUnitOfWork.cs" />
+    <Compile Include="Infastructure\RepositoryBase.cs" />
+    <Compile Include="Infastructure\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -67,13 +72,10 @@
     <Folder Include="Repositories\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BookShop.Common\BookShop.Common.csproj">
-      <Project>{88524322-551b-4614-9e5c-19319b9498d3}</Project>
-      <Name>BookShop.Common</Name>
+    <ProjectReference Include="..\BookShop.Model\BookShop.Model.csproj">
+      <Project>{bbd1b855-0120-4c20-8f1b-ed221bf04db8}</Project>
+      <Name>BookShop.Model</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

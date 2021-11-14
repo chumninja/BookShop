@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace BookShop.Data.Infastructure
 {
-    public interface IDBFactory
+    public interface IDBFactory : IDisposable
     {
-
+        BookShopDBConText Init();
     }
 }
