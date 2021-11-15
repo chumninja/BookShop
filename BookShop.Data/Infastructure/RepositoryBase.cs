@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BookShop.Data.Infastructure
 {
-    public abstract class RepositoryBase<T> where T:class
+    public abstract class RepositoryBase<T> : IRepository<T> where T:class
     {
         #region Properties
         private BookShopDBConText dataContext;
