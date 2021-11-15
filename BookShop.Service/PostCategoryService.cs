@@ -22,6 +22,7 @@ namespace BookShop.Service
     {
         IPostCategoryRepository _postCategoryRepository;
         IUnitOfWork _unitOfWork;
+        
 
         public PostCategoryService(IPostCategoryRepository postCategoryRepository, IUnitOfWork unitOfWork)
         {
