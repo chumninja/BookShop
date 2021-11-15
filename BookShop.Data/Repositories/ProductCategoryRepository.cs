@@ -5,7 +5,8 @@ using System.Linq;
 
 namespace BookShop.Data.Repositories
 {
-    public interface IProductCategoryRepository{
+    public interface IProductCategoryRepository : IRepository<ProductCategory>
+    {
         IEnumerable<ProductCategory> GetByAlias(string alias);
         //phuong thuc khong nam trong tap phuong thuc trien khai RepositoryBase thi chung ta can dinh nghia
     }

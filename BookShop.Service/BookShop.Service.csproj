@@ -40,7 +40,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PostService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BookShop.Data\BookShop.Data.csproj">
+      <Project>{42235E93-3834-4CD6-B231-82FB8AC21B8F}</Project>
+      <Name>BookShop.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BookShop.Model\BookShop.Model.csproj">
+      <Project>{BBD1B855-0120-4C20-8F1B-ED221BF04DB8}</Project>
+      <Name>BookShop.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

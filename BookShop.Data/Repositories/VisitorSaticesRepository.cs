@@ -8,7 +8,7 @@ using BookShop.Model.Models;
 
 namespace BookShop.Data.Repositories
 {
-    public interface IVisitorSaticesRepository { }
+    public interface IVisitorSaticesRepository: IRepository<VisitorStatics> { }
     public class VisitorSaticesRepository:RepositoryBase<VisitorStatics>,IVisitorSaticesRepository
     {
         public VisitorSaticesRepository(IDBFactory dbFactory) : base(dbFactory) { }

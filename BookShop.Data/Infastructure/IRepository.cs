@@ -21,6 +21,8 @@ namespace BookShop.Data.Infastructure
 
         T Delete(int id);
 
+       
+
         //Delete multi records
         void DeleteMulti(Expression<Func<T, bool>> where);
 

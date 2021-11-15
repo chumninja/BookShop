@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BookShop.Data.Repositories
 {
-    public interface IPostTagRepository { }
+    public interface IPostTagRepository : IRepository<PostTag> { }
     public class PostTagRepository:RepositoryBase<PostTag>, IPostTagRepository
     {
         public PostTagRepository(IDBFactory dbFactory) : base(dbFactory) { }

@@ -48,6 +48,6 @@ namespace BookShop.Model.Models
         [ForeignKey("CategoryPostID")]
         public virtual PostCategory PostCategory { set; get; }
 
-
+        public virtual IEnumerable<PostTag> PostTags { set; get; }
     }
 }

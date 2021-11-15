@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BookShop.Data.Repositories
 {
-    public interface IPostCategoryRepository { }
+    public interface IPostCategoryRepository: IRepository<PostCategory> { }
     public class PostCategoryRepository:RepositoryBase<PostCategory>,IPostCategoryRepository
     {
         public PostCategoryRepository(IDBFactory dbFactory):base(dbFactory) { }

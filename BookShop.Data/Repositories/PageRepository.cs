@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BookShop.Data.Repositories
 {
-    public interface IPageReposiory { }
+    public interface IPageReposiory : IRepository<Page> { }
     public class PageRepository:RepositoryBase<Page>,IPageReposiory
     {
         public PageRepository(IDBFactory dbFactory) : base(dbFactory) { }

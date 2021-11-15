@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BookShop.Data.Repositories
 {
-    public interface ISildesRepository { }
+    public interface ISildesRepository : IRepository<Sildes> { }
     public class SildesRepository:RepositoryBase<Sildes>, ISildesRepository
     {
         public SildesRepository(IDBFactory dbFactory) : base(dbFactory) { }
