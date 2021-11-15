@@ -67,6 +67,10 @@
     <Compile Include="Migrations\202111150750146_InitiaDB.designer.cs">
       <DependentUpon>202111150750146_InitiaDB.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202111151745173_InitiaDB1.cs" />
+    <Compile Include="Migrations\202111151745173_InitiaDB1.designer.cs">
+      <DependentUpon>202111151745173_InitiaDB1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\MenuGroupRepository.cs" />
@@ -92,6 +96,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202111150750146_InitiaDB.resx">
       <DependentUpon>202111150750146_InitiaDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111151745173_InitiaDB1.resx">
+      <DependentUpon>202111151745173_InitiaDB1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
