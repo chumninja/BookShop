@@ -16,16 +16,16 @@ namespace BookShop.Model.Models
         public int ID { set; get; }
 
         [Required]
-        [Column(TypeName ="nvarchar(500)")]
-        [MaxLength(500)]
+        [Column(TypeName ="nvarchar")]
+        [MaxLength(250)]
         public string Name { set; get; }
 
-        [Column(TypeName = "nvarchar(Max)")]
+        [Column(TypeName = "nvarchar")]
         public string Description { set; get; }
-        [Column(TypeName = "varchar(Max)")]
+        [Column(TypeName = "varchar")]
         public string Images { set; get; }
 
-        [Column(TypeName = "varchar(Max)")]
+        [Column(TypeName = "varchar")]
         public string Url { set; get; }
 
         public int? DisplayOrder { set; get; }

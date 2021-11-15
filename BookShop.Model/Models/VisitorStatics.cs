@@ -17,7 +17,7 @@ namespace BookShop.Model.Models
 
         public DateTime? VisitDate { set; get; }
 
-        [Column(TypeName ="varchar(50)")]
+        [Column(TypeName ="varchar")]
         public string IPAdress { set; get; }
     }
 }

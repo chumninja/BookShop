@@ -12,13 +12,16 @@ namespace BookShop.Model.Models
     public class PostTag
     {
         [Key]
+        [Column(Order = 1)]
         public int PostID { set; get; }
 
         [Key]
-        public int TagID { set; get; }
+        [MaxLength(50)]
+        [Column(TypeName ="varchar",Order = 2)]
+        public string TagID { set; get; }
 
         [ForeignKey("PostID")]
-        public virtual Product product { set; get; }
+        public virtual Post Post { set; get; }
 
         [ForeignKey("TagID")]
         public virtual Tag Tags { set; get; }
