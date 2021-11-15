@@ -8,14 +8,17 @@ using System.Threading.Tasks;
 
 namespace BookShop.Model.Models
 {
-    [Table("PostTags")]
+    [Table("ProductTags")]
     public class ProductTag
     {
         [Key]
+        [Column(Order=1)]
         public int ProductID { set; get; }
 
         [Key]
-        public int TagID { set; get; }
+        [Column(TypeName = "varchar", Order = 2)]
+        [MaxLength(50)]
+        public string TagID { set; get; }
 
         [ForeignKey("ProductID")]
         public virtual Product product { set; get; }

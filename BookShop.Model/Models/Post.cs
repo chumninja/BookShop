@@ -27,7 +27,8 @@ namespace BookShop.Model.Models
 
         public int CategoryPostID { set; get; }
 
-        public XElement MoreImage { set; get; }
+        [Column(TypeName ="xml")]
+        public string MoreImage { set; get; }
 
         [Column(TypeName = "nvarchar")]
         public string Content { set; get; }
@@ -47,7 +48,6 @@ namespace BookShop.Model.Models
         [ForeignKey("CategoryPostID")]
         public virtual PostCategory PostCategory { set; get; }
 
-        public virtual IEnumerable<PostTag> PostTag { set; get; }
 
     }
 }

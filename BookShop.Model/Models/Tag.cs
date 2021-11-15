@@ -12,8 +12,9 @@ namespace BookShop.Model.Models
     public class Tag
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ID { set; get; }
+        [MaxLength(50)]
+        [Column(TypeName = "varchar")]
+        public string ID { set; get; }
 
         [Required]
         [Column(TypeName ="varchar")]
@@ -25,8 +26,6 @@ namespace BookShop.Model.Models
         [MaxLength(250)]
         public string Type { set; get; }
 
-        public virtual IEnumerable<ProductTag> ProductTag { set; get; }
-        public virtual IEnumerable<PostTag> PostTag { set; get; }
     }
 }
 

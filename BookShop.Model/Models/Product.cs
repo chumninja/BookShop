@@ -24,7 +24,8 @@ namespace BookShop.Model.Models
         
         public int CategoryID { set; get; }
 
-        public XElement MoreImage { set; get; }
+        [Column(TypeName = "xml")]
+        public string MoreImage { set; get; }
 
         public decimal? Promotion { set; get; }
         public decimal GiaNhap { set; get; }
@@ -49,6 +50,6 @@ namespace BookShop.Model.Models
         [ForeignKey("CategoryID")]
         public virtual ProductCategory ProductCategory { set; get; }
 
-        public virtual IEnumerable<ProductTag> PostTag { set; get; }
+       
     }
 }

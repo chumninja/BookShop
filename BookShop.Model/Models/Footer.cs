@@ -13,5 +13,7 @@ namespace BookShop.Model.Models
         [Required]
         [Column(TypeName = "nvarchar")]
         public string Content { set; get; }
+
+        
     }
 }
