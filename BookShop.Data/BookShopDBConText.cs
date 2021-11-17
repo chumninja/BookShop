@@ -1,4 +1,5 @@
 ﻿using BookShop.Model.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BookShop.Data
 {
-    public class BookShopDBConText : DbContext
+    public class BookShopDBConText : IdentityDbContext<ApplicationUser>
     {
         public BookShopDBConText() :base("BookShopConnection")
         {
@@ -33,9 +34,17 @@ namespace BookShop.Data
         public DbSet<Tag> Tags { set; get; }
         public DbSet<VisitorStatics> VisitorStatics { set; get; }
         public DbSet<Error> Errors { set; get; }
+
+        public static BookShopDBConText Create()
+        {
+            return new BookShopDBConText();
+        }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             //Ghi de vao phuong thuc tao khi chay
+            modelBuilder.Entity<IdentityUserRole>().HasKey(i => new { i.UserId, i.RoleId });
+            modelBuilder.Entity<IdentityUserLogin>().HasKey(i => i.UserId);
+
         }
     }
 }

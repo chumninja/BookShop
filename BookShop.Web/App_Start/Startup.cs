@@ -12,17 +12,23 @@ using BookShop.Data;
 using System.Web.Mvc;
 using System.Web.Http;
 using Autofac.Integration.WebApi;
+using static BookShop.Web.App_Start.IdentityConfig;
+using BookShop.Model.Models;
+using Microsoft.Owin.Security.DataProtection;
+using Microsoft.AspNet.Identity;
+using System.Web;
 
 [assembly: OwinStartup(typeof(BookShop.Web.App_Start.Startup))]
 
 namespace BookShop.Web.App_Start
 {
-    public class Startup
+    public partial class Startup
     {
         public void Configuration(IAppBuilder app)
         {
             // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=316888
             ConfigAutoFac(app);
+            ConfigureAuth(app);
         }
         private void ConfigAutoFac(IAppBuilder app)
         {
@@ -33,6 +39,14 @@ namespace BookShop.Web.App_Start
 
             //Can Register cho WEB API nua
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
+
+            //Asp.Net Indetity 
+            builder.RegisterType<ApplicationUserStore>().As<IUserStore<ApplicationUser>>().InstancePerRequest();
+            builder.RegisterType<ApplicationUserManager>().AsSelf().InstancePerRequest();
+            builder.RegisterType<ApplicationSignInManager>().AsSelf().InstancePerRequest();
+            builder.Register(c => HttpContext.Current.GetOwinContext().Authentication).InstancePerRequest();
+            builder.Register(c => app.GetDataProtectionProvider()).InstancePerRequest();
+
 
             //Khoi tao Repository va UnitOfWokr 
             // Moi khi class nao dc khoi tao thi no se RegisterType se tu type den
