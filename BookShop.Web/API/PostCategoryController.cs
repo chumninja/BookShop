@@ -1,12 +1,15 @@
-﻿using BookShop.Model.Models;
+﻿using AutoMapper;
+using BookShop.Model.Models;
 using BookShop.Service;
 using BookShop.Web.Infastucture.Core;
+using BookShop.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using BookShop.Web.Infastucture.Extension;
 
 namespace BookShop.Web.API
 {
@@ -27,28 +30,37 @@ namespace BookShop.Web.API
             return CreateHttpResponse(request, () =>
             {
                 var listCategory = _postCategoryService.GetAll();
-                _postCategoryService.Save();
 
+                //Map sang view
+                var listCategoryVM = Mapper.Map<List<PostCategoryViewModel>>(listCategory);
+              
                 //sau khi save xong tao 1 cai response, add xong tra ve 1 doi tuong cho muon lam gi thi lam
-                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listCategory);//OK thanhf cong
+                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listCategoryVM);//OK thanhf cong
                 return response;
             });
 
         }
-
-        public HttpResponseMessage Post(HttpRequestMessage request, PostCategory postCategory)
+        [Route("add")]
+        public HttpResponseMessage Post(HttpRequestMessage request, PostCategoryViewModel postCategoryVM)
         {
             return CreateHttpResponse(request, () =>
             {
                 HttpResponseMessage response = null;
                 if (ModelState.IsValid)
                 {
-                    //Phuong thuc can truyen vao 2 tham so 
+                    //Phuong thuc can truyen vao 2 tham so  kiem tra xem co null cac truong ko
                     request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
                 }
                 else
                 {
-                    var category = _postCategoryService.Add(postCategory);
+                    //Tao moi mot doi tuong PostCategory để copy từ postCategoryVM từ View nhận về để adđ
+                    PostCategory newPostCategory = new PostCategory();
+
+                    //Cần using phần mở rộng của folder mới dùng dc pt này EntiryExtensions để copy sang model gốc.
+                    newPostCategory.UpdatePostCategory(postCategoryVM);
+                    //using xong phần newPostCategory sẽ tự nhận phương thức mở rộng UpdatePostCategory
+
+                    var category = _postCategoryService.Add(newPostCategory);
                     _postCategoryService.Save();
 
                     //sau khi save xong tao 1 cai response, add xong tra ve 1 doi tuong cho muon lam gi thi lam
@@ -59,19 +71,22 @@ namespace BookShop.Web.API
 
         }
 
-        public HttpResponseMessage Put(HttpRequestMessage request, PostCategory postCategory)
+        [Route("update")]
+        public HttpResponseMessage Put(HttpRequestMessage request, PostCategoryViewModel postCategoryVM)
         {
             return CreateHttpResponse(request, () =>
             {
                 HttpResponseMessage response = null;
                 if (ModelState.IsValid)
                 {
-                    //Phuong thuc can truyen vao 2 tham so 
+                    //Phuong thuc can truyen vao 2 tham so , để kiêm tra lỗi nhập dữ liệu có trống
                     request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
                 }
                 else
                 {
-                    _postCategoryService.Update(postCategory);
+                    var postCategoryDB = _postCategoryService.GetById(postCategoryVM.ID);
+                    postCategoryDB.UpdatePostCategory(postCategoryVM);
+                    _postCategoryService.Update(postCategoryDB);
                     _postCategoryService.Save();
 
                     //sau khi save xong tao 1 cai response, add xong tra ve 1 doi tuong cho muon lam gi thi lam
