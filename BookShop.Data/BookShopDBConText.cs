@@ -32,7 +32,7 @@ namespace BookShop.Data
         public DbSet<SystemConfig> SystemConfigs { set; get; }
         public DbSet<Tag> Tags { set; get; }
         public DbSet<VisitorStatics> VisitorStatics { set; get; }
-
+        public DbSet<Error> Errors { set; get; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             //Ghi de vao phuong thuc tao khi chay
