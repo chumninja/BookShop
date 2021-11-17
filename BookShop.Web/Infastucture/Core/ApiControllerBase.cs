@@ -38,18 +38,19 @@ namespace BookShop.Web.Infastucture.Core
                 }
                 LogError(ex);
                 reponse = requestMessage.CreateResponse(HttpStatusCode.BadRequest, ex.InnerException.Message);
+            }
             catch (DbUpdateException dbEx)
             {
                 LogError(dbEx);
                 reponse = requestMessage.CreateResponse(HttpStatusCode.BadRequest, dbEx.InnerException.Message);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 LogError(ex);
-                reponse = requestMessage.CreateResponse(HttpStatusCode.BadRequest,ex.Message);
+                reponse = requestMessage.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
             }
-            
 
+            return reponse;
 
         }
         private void LogError(Exception ex)
