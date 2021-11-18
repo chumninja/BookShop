@@ -211,12 +211,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\app.js" />
+    <Content Include="app\app.routes.js" />
+    <Content Include="app\Components\product\product.route.js" />
+    <Content Include="app\Components\product\productAddControllerjs.js" />
+    <Content Include="app\Components\product\productAddView.html" />
+    <Content Include="app\Components\product\productEditController.js" />
+    <Content Include="app\Components\product\productEditView.html" />
+    <Content Include="app\Components\product\productListController.js" />
+    <Content Include="app\Components\product\productListView.html" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Scripts\plugins\angular\angular-csp.css" />
-    <Content Include="Scripts\plugins\angular\angular.js" />
-    <Content Include="Scripts\plugins\angular\angular.min.js" />
-    <Content Include="Scripts\plugins\angular\index.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -227,10 +232,22 @@
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="app\Components\order\" />
+    <Folder Include="app\Components\product_categories\" />
+    <Folder Include="app\Components\roles\" />
+    <Folder Include="app\Components\users\" />
+    <Folder Include="app\Shared\directive\" />
+    <Folder Include="app\Shared\footer\" />
+    <Folder Include="app\Shared\menu\" />
+    <Folder Include="app\Shared\navigation\" />
+    <Folder Include="app\Shared\service\" />
     <Folder Include="App_Data\" />
-    <Folder Include="Assets\admin\" />
+    <Folder Include="Assets\admin\css\" />
+    <Folder Include="Assets\admin\img\" />
+    <Folder Include="Assets\admin\js\" />
+    <Folder Include="Assets\admin\libs\" />
     <Folder Include="Assets\client\" />
-    <Folder Include="Scripts\spa\" />
+    <Folder Include="Views\Admin\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -255,15 +272,6 @@
   <ItemGroup>
     <Content Include=".bowerrc" />
     <Content Include="bower.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Scripts\plugins\angular\.bower.json" />
-    <Content Include="Scripts\plugins\angular\angular.min.js.gzip" />
-    <Content Include="Scripts\plugins\angular\angular.min.js.map" />
-    <Content Include="Scripts\plugins\angular\bower.json" />
-    <Content Include="Scripts\plugins\angular\LICENSE.md" />
-    <Content Include="Scripts\plugins\angular\package.json" />
-    <Content Include="Scripts\plugins\angular\README.md" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
