@@ -15,7 +15,7 @@
 
     <link href="~/Assets/admin/css/adminlte.min.css" rel="stylesheet" />
 </head>
-<body class="hold-transition sidebar-mini" ng-app="bookshop">
+<body class="hold-transition sidebar-mini">
     <!-- Site wrapper -->
     <div class="wrapper">
         <!-- Navbar -->
@@ -202,15 +202,15 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a ui-sref="products" class="nav-link">
+                                    <a href="../../index.html" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Danh sách sản phẩm</p>
+                                        <p>Dashboard v1</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a ui-sref="product_add" class="nav-link">
+                                    <a href="../../index2.html" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Thêm mới sản phẩm</p>
+                                        <p>Dashboard v2</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -832,7 +832,7 @@
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
-            <div ui-view></div>
+           <!--đã copy homeView-->
         </div>
         <!-- /.content-wrapper -->
 
@@ -859,18 +859,9 @@
     <!-- AdminLTE App -->
     <script src="~/Assets/admin/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
+
     <script src="~/Assets/admin/js/demo.js"></script>
-
-    <!-- Begin embed angularJS -->
-    <script src="~/Assets/admin/libs/angular/angular.js"></script>
-    <script src="~/Assets/admin/libs/angular-ui-router/release/angular-ui-router.js"></script>
-    <script src="~/app/Shared/modules/bookshop.common.js"></script>
-    <script src="~/app/app.js"></script>
-
-    <script src="~/app/components/products/products.module.js"></script>
-    <script src="~/app/components/products/productListController.js"></script>
-    <script src="~/app/components/products/productAddController.js"></script>
-    <script src="~/app/components/home/homeController.js"></script>
 </body>
 </html>
+
 

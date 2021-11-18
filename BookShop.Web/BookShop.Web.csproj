@@ -197,6 +197,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -212,14 +213,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.js" />
-    <Content Include="app\app.routes.js" />
-    <Content Include="app\Components\product\product.route.js" />
-    <Content Include="app\Components\product\productAddControllerjs.js" />
-    <Content Include="app\Components\product\productAddView.html" />
-    <Content Include="app\Components\product\productEditController.js" />
-    <Content Include="app\Components\product\productEditView.html" />
-    <Content Include="app\Components\product\productListController.js" />
-    <Content Include="app\Components\product\productListView.html" />
+    <Content Include="app\components\home\homeController.js" />
+    <Content Include="app\components\home\homeView.html" />
+    <Content Include="app\components\products\productAddController.js" />
+    <Content Include="app\components\products\productAddView.html" />
+    <Content Include="app\components\products\productEditController.js" />
+    <Content Include="app\components\products\productEditView.html" />
+    <Content Include="app\components\products\productListController.js" />
+    <Content Include="app\components\products\productListView.html" />
+    <Content Include="app\components\products\products.module.js" />
+    <Content Include="app\Shared\modules\bookshop.common.js" />
     <Content Include="Assets\admin\css\adminlte.css" />
     <Content Include="Assets\admin\css\adminlte.min.css" />
     <Content Include="Assets\admin\css\alt\adminlte.components.css" />
@@ -316,7 +319,6 @@
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <None Include="Views\Admin\Index.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -329,13 +331,12 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="app\Components\order\" />
-    <Folder Include="app\Components\product_categories\" />
-    <Folder Include="app\Components\roles\" />
-    <Folder Include="app\Components\users\" />
+    <Folder Include="app\components\order\" />
+    <Folder Include="app\components\product_categories\" />
+    <Folder Include="app\components\roles\" />
+    <Folder Include="app\components\users\" />
     <Folder Include="app\Shared\directive\" />
     <Folder Include="app\Shared\footer\" />
-    <Folder Include="app\Shared\menu\" />
     <Folder Include="app\Shared\navigation\" />
     <Folder Include="app\Shared\service\" />
     <Folder Include="App_Data\" />
@@ -438,6 +439,12 @@
     <Content Include="Assets\admin\libs\bootstrap\js\bootstrap.bundle.min.js.map" />
     <Content Include="Assets\admin\libs\bootstrap\js\bootstrap.js.map" />
     <Content Include="Assets\admin\libs\bootstrap\js\bootstrap.min.js.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\TrangChu.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
