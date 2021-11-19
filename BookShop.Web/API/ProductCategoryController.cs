@@ -10,6 +10,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
+
 namespace BookShop.Web.API
 {
     [RoutePrefix("api/productcategory")]
@@ -21,12 +22,24 @@ namespace BookShop.Web.API
             this._productCategroryService = productCategoryService;
         }
         [Route("getall")]
-        public HttpResponseMessage GetAll(HttpRequestMessage request)
+        public HttpResponseMessage GetAll(HttpRequestMessage request,int page,int pageSize = 20)
         {
             return CreateHttpResponse(request, () => {
+                int totalRow = 0;
                 var model = _productCategroryService.GetAll();
-                var reponseData = Mapper.Map<IEnumerable<ProductCategory>, IEnumerable<ProductCategoryViewModel>>(model);
-                var response = request.CreateResponse(HttpStatusCode.OK, reponseData);
+                totalRow = model.Count();
+                var query = model.OrderByDescending(x => x.CreateDate).Skip(page * pageSize).Take(pageSize);//take lấy ra
+                var reponseData = Mapper.Map<IEnumerable<ProductCategory>, IEnumerable<ProductCategoryViewModel>>(query);
+
+                //chua tra ve nua ma tao 1 doi tuong PaginationSet
+                var paginationSet = new PaginationSet<ProductCategoryViewModel>()
+                {
+                    Items = reponseData,
+                    Page = page,
+                    TotalCount = totalRow,
+                    TotalPage = (int)Math.Ceiling((decimal)totalRow / pageSize)//lam tron tong so page
+                };
+                var response = request.CreateResponse(HttpStatusCode.OK, paginationSet);
                 return response;
             });
         }
