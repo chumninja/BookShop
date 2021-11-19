@@ -11,10 +11,13 @@ namespace BookShop.Service
 {
     public interface IProductCategoryService
     {
+        //Cái này dạng triển khai các phương thức cần viết dưới kế thừa và dùng
+        //các phương thức từ repository có sẵn.
         ProductCategory Add(ProductCategory productCategory);
         void Update(ProductCategory productCategory);
         ProductCategory Delete(int id);
         IEnumerable<ProductCategory> GetAll();
+        IEnumerable<ProductCategory> GetAll(string keyword);
         IEnumerable<ProductCategory> GetAllByParentID(int parentID);
         ProductCategory GetById(int id);
         void Save();
@@ -42,6 +45,15 @@ namespace BookShop.Service
 
         public IEnumerable<ProductCategory> GetAll()
         {
+            return _productCategoryRepository.GetAll();
+        }
+
+        public IEnumerable<ProductCategory> GetAll(string keyword)
+        {
+            if(!string.IsNullOrEmpty(keyword))
+            {
+                return _productCategoryRepository.GetMulti(x => x.NameCategory.Contains(keyword));
+            }
             return _productCategoryRepository.GetAll();
         }
 

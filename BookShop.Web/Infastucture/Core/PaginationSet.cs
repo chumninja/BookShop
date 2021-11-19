@@ -17,6 +17,7 @@ namespace BookShop.Web.Infastucture.Core
         }
         public int TotalPage { set; get; }
         public int TotalCount { set; get; }
+        public int TotalCountCunrent { set; get; }
         public IEnumerable<T> Items { set; get; }
 
     }

@@ -22,13 +22,16 @@ namespace BookShop.Web.API
             this._productCategroryService = productCategoryService;
         }
         [Route("getall")]
-        public HttpResponseMessage GetAll(HttpRequestMessage request,int page,int pageSize = 20)
+        public HttpResponseMessage GetAll(HttpRequestMessage request,string keyword,int page,int pageSize = 20)
         {
             return CreateHttpResponse(request, () => {
                 int totalRow = 0;
-                var model = _productCategroryService.GetAll();
-                totalRow = model.Count();
+                int totalCountCurent = 0;
+                var model = _productCategroryService.GetAll(keyword);
+               
                 var query = model.OrderByDescending(x => x.CreateDate).Skip(page * pageSize).Take(pageSize);//take lấy ra
+                totalRow = model.Count();
+                totalCountCurent = query.Count();
                 var reponseData = Mapper.Map<IEnumerable<ProductCategory>, IEnumerable<ProductCategoryViewModel>>(query);
 
                 //chua tra ve nua ma tao 1 doi tuong PaginationSet
@@ -37,6 +40,7 @@ namespace BookShop.Web.API
                     Items = reponseData,
                     Page = page,
                     TotalCount = totalRow,
+                    TotalCountCunrent = totalCountCurent,
                     TotalPage = (int)Math.Ceiling((decimal)totalRow / pageSize)//lam tron tong so page
                 };
                 var response = request.CreateResponse(HttpStatusCode.OK, paginationSet);
