@@ -12,7 +12,7 @@ using System.Web.Http;
 
 namespace BookShop.Web.API
 {
-    [RoutePrefix("api/poductcategory")]
+    [RoutePrefix("api/productcategory")]
     public class ProductCategoryController : ApiControllerBase
     {
         IProductCategoryService _productCategroryService;

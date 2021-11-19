@@ -4,6 +4,7 @@
     using Microsoft.AspNet.Identity.EntityFramework;
     using Model.Models;
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
@@ -17,11 +18,12 @@
 
         protected override void Seed(BookShop.Data.BookShopDBConText context)
         {
+            CreateProductCategory(context);
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method
             //  to avoid creating duplicate seed data.
-            var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new BookShopDBConText()));
+            /*var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new BookShopDBConText()));
 
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new BookShopDBConText()));
 
@@ -45,7 +47,24 @@
 
             var adminUser = manager.FindByEmail("tedu.international@gmail.com");
 
-            manager.AddToRoles(adminUser.Id, new string[] { "Admin", "User" });
+            manager.AddToRoles(adminUser.Id, new string[] { "Admin", "User" });*/
+        }
+        public void CreateProductCategory(BookShop.Data.BookShopDBConText context)
+        {
+            if(context.ProductCategories.Count() == 0)
+            {
+                List<ProductCategory> listProductCatgegory = new List<ProductCategory>()
+            {
+                new ProductCategory() { NameCategory = "Giao Khoa",Alias="giao-khoa",Status=true},
+                new ProductCategory() { NameCategory = "Truyen",Alias="truyen",Status=true},
+                new ProductCategory() { NameCategory = "Tieu Thuyet",Alias="tieu-thuyet",Status=true},
+                new ProductCategory() { NameCategory = "Giao Duc",Alias="giao-duc",Status=true},
+                new ProductCategory() { NameCategory = "Van Hoc",Alias="van-hoc",Status=true}
+            };
+                context.ProductCategories.AddRange(listProductCatgegory);
+                context.SaveChanges();
+            }
+            
         }
     }
 }
