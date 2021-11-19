@@ -11,6 +11,7 @@ using static BookShop.Web.App_Start.IdentityConfig;
 
 namespace BookShop.Web.API
 {
+    //Danh muc
     [RoutePrefix("api/account")]
     public class AccountController : ApiController
     {

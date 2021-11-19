@@ -229,6 +229,7 @@
     <Content Include="app\components\product_categories\productCategory.module.js" />
     <Content Include="app\components\product_categories\productCategoryListController.js" />
     <Content Include="app\components\product_categories\productCategoryListView.html" />
+    <Content Include="app\Shared\filter\statusFilter.js" />
     <Content Include="app\Shared\modules\bookshop.common.js" />
     <Content Include="app\Shared\service\apiService.js" />
     <Content Include="Assets\admin\css\adminlte.css" />
