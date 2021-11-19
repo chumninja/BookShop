@@ -51,6 +51,41 @@ namespace BookShop.Web.Infastucture.Extension
 
         }
 
+        public static void UpdateProduct(this Product product, ProductViewModel productVM)
+        {
+            product.ID = productVM.ID;
+            product.NameProduct = productVM.NameProduct;
+            product.Alias = productVM.Alias;
+            product.Description = productVM.Description;
+            product.Content = productVM.Content;
+            product.CategoryID = productVM.CategoryID;
+            product.MoreImage = productVM.MoreImage;
+            product.Images = productVM.Images;
+            product.HomeFlag = productVM.HomeFlag;
+            product.CreateDate = productVM.CreateDate;
+            product.CreateBy = productVM.CreateBy;
+            product.UpdateDate = productVM.UpdateDate;
+            product.MetaKeyWord = productVM.MetaKeyWord;
+            product.MetaDescription = productVM.MetaDescription;
+            product.Status = productVM.Status;
+        }
+        public static void UpdateProductCategory(this ProductCategory productCategory,ProductCategoryViewModel productCategoryVM)
+        {
+            productCategory.ID = productCategoryVM.ID;
+            productCategory.NameCategory = productCategoryVM.NameCategory;
+            productCategory.Alias = productCategoryVM.Alias;
+            productCategory.Description = productCategoryVM.Description;
+            productCategory.ParentID = productCategoryVM.ParentID;
+            productCategory.DisplayOrder = productCategoryVM.DisplayOrder;
+            productCategory.Images = productCategoryVM.Images;
+            productCategory.HomeFlag = productCategoryVM.HomeFlag;
+            productCategory.CreateDate = productCategoryVM.CreateDate;
+            productCategory.CreateBy = productCategoryVM.CreateBy;
+            productCategory.UpdateDate = productCategoryVM.UpdateDate;
+            productCategory.MetaKeyWord = productCategoryVM.MetaKeyWord;
+            productCategory.MetaDescription = productCategoryVM.MetaDescription;
+            productCategory.Status = productCategoryVM.Status;
+        }
         
     }
 }
