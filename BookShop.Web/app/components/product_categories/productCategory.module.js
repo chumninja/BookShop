@@ -15,6 +15,11 @@
             templateUrl: "/app/components/product_categories/productCategoryAddView.html",//gọi đến template đã tách
             controller: "productCategoryAddController"// vao đc homeView.html nó tự động nhận đc homeController , 
             //nhưng cần khai báo 1 file có tên zi
+        }).state('edit_product_category', {
+            url: "/edit_product_category/:id",//url thực tế ở trên trang
+            templateUrl: "/app/components/product_categories/productCategoryEditView.html",//gọi đến template đã tách
+            controller: "productCategoryEditController"// vao đc homeView.html nó tự động nhận đc homeController , 
+            //nhưng cần khai báo 1 file có tên zi
         });
     }
 

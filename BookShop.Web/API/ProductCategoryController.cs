@@ -65,6 +65,20 @@ namespace BookShop.Web.API
                 return response;
             });
         }
+
+        [Route("getbyid/{id:int}")]
+        [HttpGet]
+        public HttpResponseMessage GetAllParent(HttpRequestMessage request,int id)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+
+                var model = _productCategroryService.GetById(id);
+                var reponseData = Mapper.Map<ProductCategory,ProductCategoryViewModel>(model);//tra về 1 đối tượng
+                var response = request.CreateResponse(HttpStatusCode.OK, reponseData);
+                return response;
+            });
+        }
         [Route("create_productcategory")]
         [HttpPost]
         [AllowAnonymous]
@@ -84,9 +98,39 @@ namespace BookShop.Web.API
                     
                     var newProductCategory = new ProductCategory();
                     newProductCategory.UpdateProductCategory(productCategoryVM);// truyên vào view model nó sẽ copy giá trị sang newProdcuctCategory.
+                    newProductCategory.CreateDate = DateTime.Now;
                     _productCategroryService.Add(newProductCategory);
                     _productCategroryService.Save();
                     var responsedata = Mapper.Map<ProductCategory, ProductCategoryViewModel>(newProductCategory);// truyền vào cái kiểu gì thì mapp sang kiểu đo
+                    response = request.CreateResponse(HttpStatusCode.Created, responsedata);
+                }
+                return response;
+            });
+
+        }
+
+        [Route("edit_productcategory")]
+        [HttpPut]
+        [AllowAnonymous]
+        public HttpResponseMessage Update(HttpRequestMessage request, ProductCategoryViewModel productCategoryVM)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+                if (!ModelState.IsValid)
+                {
+                    response = request.CreateResponse(HttpStatusCode.BadGateway, ModelState);
+                    //ném lỗi 400 ra ngoài.
+                    //reponse ném ra ngoài view thông qua controller js đó
+                }
+                else
+                {
+                    productCategoryVM.UpdateDate = DateTime.Now;
+                    var updateProductCategory = _productCategroryService.GetById(productCategoryVM.ID);
+                    updateProductCategory.UpdateProductCategory(productCategoryVM);// truyên vào view model nó sẽ copy giá trị sang newProdcuctCategory.
+                    _productCategroryService.Update(updateProductCategory);
+                    _productCategroryService.Save();
+                    var responsedata = Mapper.Map<ProductCategory, ProductCategoryViewModel>(updateProductCategory);// truyền vào cái kiểu gì thì mapp sang kiểu đo
                     response = request.CreateResponse(HttpStatusCode.Created, responsedata);
                 }
                 return response;
