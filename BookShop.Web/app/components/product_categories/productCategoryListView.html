@@ -69,7 +69,7 @@
                             <td>{{listproduct.ID}}.</td>
                             <td>{{listproduct.NameCategory}}</td>
                             <td>
-                                {{listproduct.CreateDate| date:'dd/MM/yyyy hh:mm:ss'}}
+                                {{listproduct.CreateDate| date:'dd/MM/yyyy'}}
                             </td>
                             <td>
                                 <span ng-class="{'badge bg-danger':listproduct.Status==false,'badge bg-green':listproduct.Status==true}">{{listproduct.Status | statusFilter}}</span>

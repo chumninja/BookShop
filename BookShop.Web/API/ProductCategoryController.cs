@@ -67,6 +67,7 @@ namespace BookShop.Web.API
         }
         [Route("create_productcategory")]
         [HttpPost]
+        [AllowAnonymous]
         public HttpResponseMessage Create(HttpRequestMessage request, ProductCategoryViewModel productCategoryVM)
         {
             return CreateHttpResponse(request, () =>

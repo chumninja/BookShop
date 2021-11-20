@@ -32,8 +32,7 @@
                 {
                     notificationService.displayWarning('Không có bản ghi nào được tìm thấy.')
                 } else {
-                    if (config.params.keyword == '') {
-                        notificationService.displaySuccess('Đã tìm thấy ' + result.data.TotalCountCunrent + ' bản ghi.');
+                    if (config.params.keyword == '') { 
                     } else {
                         notificationService.displaySuccess('Đã tìm thấy ' + result.data.TotalCount + ' bản ghi là ' + config.params.keyword)
                     }

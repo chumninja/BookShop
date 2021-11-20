@@ -116,6 +116,7 @@
                             <label>Danh Mục cha</label>
                             <select class="custom-select" name="parentID"  ng-model="productCategory.ParentID" 
                                     ng-options="option.ID as option.NameCategory for option in parentCategories">
+                                <option value="">Chọn danh mục</option>
                             </select>
                             <input type="hidden" name="parentID" ng-model="productCategory.ParentID" />
                         </div>
