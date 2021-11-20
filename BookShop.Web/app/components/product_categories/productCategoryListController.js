@@ -3,8 +3,8 @@
 (function (app) {
 
     app.controller('productCategoryListController', productCategoryListController);
-    productCategoryListController.$inject = ['$scope','apiService']
-    function productCategoryListController($scope,apiService) {
+    productCategoryListController.$inject = ['$scope','apiService','notificationService']
+    function productCategoryListController($scope, apiService, notificationService) {
         $scope.productCategories = [];
         $scope.page = 0;
         $scope.pagesCount = 0;
@@ -28,6 +28,16 @@
                 }
             }
             apiService.get('/api/productcategory/getall', config, function (result) {
+                if (result.data.TotalCount == 0)
+                {
+                    notificationService.displayWarning('Không có bản ghi nào được tìm thấy.')
+                } else {
+                    if (config.params.keyword == '') {
+                        notificationService.displaySuccess('Đã tìm thấy ' + result.data.TotalCountCunrent + ' bản ghi.');
+                    } else {
+                        notificationService.displaySuccess('Đã tìm thấy ' + result.data.TotalCount + ' bản ghi là ' + config.params.keyword)
+                    }
+                }
                 $scope.productCategories = result.data.Items;
                 $scope.page = result.data.Page;//Page to này ở bên ProductCategoryAPIController trả sang của hàm PaginationSet
                 $scope.pagesCount = result.data.TotalPage;

@@ -9,11 +9,12 @@
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
-
     <link href="~/Assets/admin/libs/fontawesome-free/css/all.min.css" rel="stylesheet" />
     <!-- Theme style -->
-
     <link href="~/Assets/admin/css/adminlte.min.css" rel="stylesheet" />
+
+    <!-- Toastr notification -->
+    <link href="~/Assets/admin/libs/toastr/toastr.css" rel="stylesheet" />
 </head>
 <body class="hold-transition sidebar-mini" ng-app="bookshop">
     <!-- Site wrapper -->
@@ -260,10 +261,8 @@
     </div>
     <!-- ./wrapper -->
     <!-- jQuery -->
-
-    <script src="~/Assets/admin/libs/jquery/jquery.min.js"></script>
+    <script src="~/Assets/admin/libs/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
-
     <script src="~/Assets/admin/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="~/Assets/admin/js/adminlte.min.js"></script>
@@ -273,10 +272,12 @@
     <!-- Begin embed angularJS -->
     <script src="~/Assets/admin/libs/angular/angular.js"></script>
     <script src="~/Assets/admin/libs/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="~/Assets/admin/libs/toastr/toastr.js"></script>
     <script src="~/app/Shared/modules/bookshop.common.js"></script>
     <script src="~/app/Shared/filter/statusFilter.js"></script>
     <script src="~/app/Shared/service/apiService.js"></script>
     <script src="~/app/Shared/directives/pagerDirective.js"></script>
+    <script src="~/app/Shared/service/notificationService.js"></script>
     <script src="~/app/app.js"></script>
     <script src="~/app/components/product_categories/productCategory.module.js"></script>
     <script src="~/app/components/product_categories/productCategoryListController.js"></script>
