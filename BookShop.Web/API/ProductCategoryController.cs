@@ -10,7 +10,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-
+using System.Web.Script.Serialization;
 
 namespace BookShop.Web.API
 {
@@ -68,13 +68,13 @@ namespace BookShop.Web.API
 
         [Route("getbyid/{id:int}")]
         [HttpGet]
-        public HttpResponseMessage GetAllParent(HttpRequestMessage request,int id)
+        public HttpResponseMessage GetAllParent(HttpRequestMessage request, int id)
         {
             return CreateHttpResponse(request, () =>
             {
 
                 var model = _productCategroryService.GetById(id);
-                var reponseData = Mapper.Map<ProductCategory,ProductCategoryViewModel>(model);//tra về 1 đối tượng
+                var reponseData = Mapper.Map<ProductCategory, ProductCategoryViewModel>(model);//tra về 1 đối tượng
                 var response = request.CreateResponse(HttpStatusCode.OK, reponseData);
                 return response;
             });
@@ -95,7 +95,7 @@ namespace BookShop.Web.API
                 }
                 else
                 {
-                    
+
                     var newProductCategory = new ProductCategory();
                     newProductCategory.UpdateProductCategory(productCategoryVM);// truyên vào view model nó sẽ copy giá trị sang newProdcuctCategory.
                     newProductCategory.CreateDate = DateTime.Now;
@@ -137,5 +137,58 @@ namespace BookShop.Web.API
             });
 
         }
+        [Route("delete_productcategory")]
+        [HttpDelete]
+        public HttpResponseMessage Delete(HttpRequestMessage request, int id)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+                if (!ModelState.IsValid)
+                {
+                    response = request.CreateResponse(HttpStatusCode.BadGateway, ModelState);
+                    //ném lỗi 400 ra ngoài.
+                    //reponse ném ra ngoài view thông qua controller js đó
+                }
+                else
+                {
+
+                    var oldProductCategory = _productCategroryService.Delete(id);
+                    _productCategroryService.Save();
+                    var responsedata = Mapper.Map<ProductCategory, ProductCategoryViewModel>(oldProductCategory);//vẫn muốn trả về thì ném ra đây
+                    response = request.CreateResponse(HttpStatusCode.Created, responsedata);
+                }
+                return response;
+            });
+
+        }
+        [Route("deletemulti_productcategory")]
+        [HttpDelete]
+        public HttpResponseMessage Delete(HttpRequestMessage request, string listID)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+                if (!ModelState.IsValid)
+                {
+                    response = request.CreateResponse(HttpStatusCode.BadGateway, ModelState);
+                    //ném lỗi 400 ra ngoài.
+                    //reponse ném ra ngoài view thông qua controller js đó
+                }
+                else
+                {
+                    var ids = new JavaScriptSerializer().Deserialize<List<int>>(listID);
+                    foreach (var itemID in ids)
+                    {
+                        _productCategroryService.Delete(itemID);
+                    }
+                    _productCategroryService.Save();
+                    response = request.CreateResponse(HttpStatusCode.OK, true);
+                }
+                return response;
+            });
+
+        }
+
     }
 }

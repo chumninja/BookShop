@@ -7,7 +7,8 @@
         return {
             get: get,//hien tai lam 1 pt get sau nay co nhieu post put
             post: post,
-            put: put
+            put: put,
+            del:del
         }
         //ném vào 4 tham số.
         function post(url, data,success,failure) {
@@ -21,6 +22,20 @@
                     failure(error);
                 }
                
+            });
+        }
+
+        //ném vào 4 tham số.
+        function del(url, data, success, failure) {
+            $http.delete(url, data).then(function (result) {
+                success(result);
+            }, function (error) {
+                if (error.status === 401) {
+                    notificationService.displayError('Authenticate is required.')
+                } else if (failure != null) {
+                    failure(error);
+                }
+
             });
         }
         //ném vào 4 tham số.

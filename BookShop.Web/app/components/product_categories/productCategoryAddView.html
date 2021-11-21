@@ -43,7 +43,7 @@
                     <div class="col-sm-9">
                         <!-- text input -->
                         <div class="form-group">
-                            <label>Tên Danh mục<span class="text-danger">(*)</span></label>
+                            <label>Tên Danh mục <span class="text-danger">(*)</span></label>
                             <input type="text" required name="name" ng-maxlength="256" ng-change="GetSeoTitle()" ng-model="productCategory.NameCategory" class="form-control">
                             <span ng-show="frmAddProductCategory.name.$invalid" class="text-danger">Phải nhập tên danh mục.</span>
                             <span ng-show="frmEditProductCategory.name.$error.maxlength" class="text-danger">Độ dài tên danh mục không quá 256 ký tự.</span>
