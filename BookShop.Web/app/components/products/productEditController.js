@@ -7,6 +7,10 @@
     function productEditController(apiService, $scope, notificationService, $state, $stateParams, commonService) {
         $scope.product = { 
         }
+        $scope.ckeditorOptions = {
+            language: 'vi',
+            height: '200px'
+        }
         $scope.EditProduct = EditProduct;
         $scope.GetSeoTitle = GetSeoTitle;
         function GetSeoTitle() {
