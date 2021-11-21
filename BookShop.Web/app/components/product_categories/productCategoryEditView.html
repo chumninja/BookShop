@@ -43,17 +43,21 @@
                     <div class="col-sm-9">
                         <!-- text input -->
                         <div class="form-group">
-                            <label>Tên Danh mục</label>
-                            <input type="text" name="name" ng-change="GetSeoTitle()" ng-model="productCategory.NameCategory" class="form-control">
+                            <label>Tên Danh mục <span class="text-danger">(*)</span></label>
+                            <input type="text" name="name" ng-maxlength="256" required ng-change="GetSeoTitle()" ng-model="productCategory.NameCategory" class="form-control">
+                            <span ng-show="frmEditProductCategory.name.$invalid" class="text-danger">Phải nhập tên danh mục.</span>
+                            <span ng-show="frmEditProductCategory.name.$error.maxlength" class="text-danger">Độ dài tên danh mục không quá 256 ký tự.</span>
                         </div>
 
                         <div class="form-group">
-                            <label>SEO</label>
-                            <input type="text" name="alias" ng-model="productCategory.Alias" class="form-control">
+                            <label>Tiêu đề SEO <span class="text-danger">(*)</span></label>
+                            <input type="text" name="alias" required ng-model="productCategory.Alias" class="form-control">
+                            <span ng-show="frmEditProductCategory.alias.$invalid" class="text-danger">Phải nhập tiêu đề seo.</span>
                         </div>
                         <div class="form-group">
-                            <label>Mô tả ngắn</label>
-                            <textarea class="form-control" name="description" ng-model="productCategory.Description" rows="3"></textarea>
+                            <label>Mô tả ngắn <span class="text-danger">(*)</span></label>
+                            <textarea class="form-control" name="description" required ng-model="productCategory.Description" rows="3"></textarea>
+                            <span ng-show="frmEditProductCategory.description.$invalid" class="text-danger">Phải nhập thông tin mô tả.</span>
                         </div>
                         <!-- Image -->
                         <div class="form-group">
@@ -71,12 +75,12 @@
 
                         <div class="form-group">
                             <label>Meta Keyword</label>
-                            <textarea class="form-control" name="description" ng-model="productCategory.MetaKeyWord" rows="3"></textarea>
+                            <textarea class="form-control" name="metakeyword" ng-model="productCategory.MetaKeyWord" rows="3"></textarea>
                         </div>
 
                         <div class="form-group">
                             <label>MetaDescription</label>
-                            <textarea class="form-control" name="description" ng-model="productCategory.MetaDescription" rows="3"></textarea>
+                            <textarea class="form-control" name="metadescription" ng-model="productCategory.MetaDescription" rows="3"></textarea>
                         </div>
 
                     </div>
@@ -142,7 +146,7 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-success">Cập nhật danh mục</button>
+                        <button type="submit" ng-disabled="frmEditProductCategory.$invalid" class="btn btn-success">Cập nhật danh mục</button>
 
                     </div>
                 </div>
