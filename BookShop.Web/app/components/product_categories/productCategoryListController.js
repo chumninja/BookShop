@@ -3,7 +3,7 @@
 (function (app) {
 
     app.controller('productCategoryListController', productCategoryListController);
-    productCategoryListController.$inject = ['$scope', 'apiService', 'notificationService', '$ngBootbox','$filter']
+    productCategoryListController.$inject = ['$scope', 'apiService', 'notificationService', '$ngBootbox', '$filter']
     function productCategoryListController($scope, apiService, notificationService, $ngBootbox, $filter) {
         $scope.productCategories = [];
         $scope.page = 0;
@@ -20,19 +20,54 @@
                 var config = {
                     params: {
                         id: id,
-
                     }
                 }
                 apiService.del('/api/productcategory/delete_productcategory', config, function (result) {
                     //4 tham số data ,params,success,failure
-                    notificationService.displaySuccess('Xóa thành công '+result.data.NameCategory);
+                    notificationService.displaySuccess('Xóa thành công ' + result.data.NameCategory);
                     searchProductCategory();
                 }, function () {
                     notificationService.displayError('Xóa không thành công');
                 });
             });
         }
+        //phương thức deleteMutil()
+        $scope.deleteMultiple = deleteMultiple;
+        function deleteMultiple() {
+            var listID = [];
+            $.each($scope.selected, function (i, item) {
+                listID.push(item.ID);
+            });
+            var config = {
+                params: {
+                    checkedProductCategoris: JSON.stringify(listID)//chuyển sang kiểu chuỗi json
+                }
+            }
+            apiService.del('/api/productcategory/deletemulti_productcategory', config, function (result) {
+                notificationService.displaySuccess('Xóa thành công ' + result.data + ' bản ghi.');
+                searchProductCategory();
+            }, function (error) {
+                notificationService.displayError('Xóa không thành công.');
+            });
+        }
 
+        // phương thức selectALL()
+        //mặc định ban đầu chưa check all 
+        $scope.isAll = false;
+        $scope.selectAll = selectAll;
+        function selectAll() {
+            if ($scope.isAll == false) {
+                angular.forEach($scope.productCategories, function (item) {
+                    item.checked = true;//duyệt qua để gán tất cả các check box bằng true.
+                });
+                $scope.isAll = true;//đổi sang isall bằng true.
+            } else {
+                angular.forEach($scope.productCategories, function (item) {
+                    item.checked = false;
+                });
+                $scope.isAll = false;
+            }
+        }
 
         //Phuong thức selected nhiều id
         $scope.$watch("productCategories", function (n, o) {
@@ -43,7 +78,7 @@
             } else {
                 $('#btnDelete').attr('disabled', 'disabled');
             }
-        },true);
+        }, true);
 
         //button search
         $scope.searchProductCategory = searchProductCategory;
@@ -61,11 +96,10 @@
                 }
             }
             apiService.get('/api/productcategory/getall', config, function (result) {
-                if (result.data.TotalCount == 0)
-                {
+                if (result.data.TotalCount == 0) {
                     notificationService.displayWarning('Không có bản ghi nào được tìm thấy.')
                 } else {
-                    if (config.params.keyword == '') { 
+                    if (config.params.keyword == '') {
                     } else {
                         notificationService.displaySuccess('Đã tìm thấy ' + result.data.TotalCount + ' bản ghi là ' + config.params.keyword)
                     }

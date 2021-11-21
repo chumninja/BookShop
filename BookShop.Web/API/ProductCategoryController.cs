@@ -164,7 +164,7 @@ namespace BookShop.Web.API
         }
         [Route("deletemulti_productcategory")]
         [HttpDelete]
-        public HttpResponseMessage Delete(HttpRequestMessage request, string listID)
+        public HttpResponseMessage Delete(HttpRequestMessage request, string checkedProductCategoris)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -177,13 +177,15 @@ namespace BookShop.Web.API
                 }
                 else
                 {
-                    var ids = new JavaScriptSerializer().Deserialize<List<int>>(listID);
-                    foreach (var itemID in ids)
+                  
+                    var listID = new JavaScriptSerializer().Deserialize<List<int>>(checkedProductCategoris);
+                    foreach (var itemID in listID)
                     {
                         _productCategroryService.Delete(itemID);
+                    
                     }
                     _productCategroryService.Save();
-                    response = request.CreateResponse(HttpStatusCode.OK, true);
+                    response = request.CreateResponse(HttpStatusCode.OK, listID.Count());
                 }
                 return response;
             });
