@@ -56,6 +56,9 @@ namespace BookShop.Web.Infastucture.Extension
             product.ID = productVM.ID;
             product.NameProduct = productVM.NameProduct;
             product.Alias = productVM.Alias;
+            product.Price = productVM.Price;
+            product.Promotion = productVM.Promotion;
+            product.GiaNhap = productVM.GiaNhap;
             product.Description = productVM.Description;
             product.Content = productVM.Content;
             product.CategoryID = productVM.CategoryID;

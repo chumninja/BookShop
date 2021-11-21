@@ -10,10 +10,15 @@
             templateUrl: "/app/components/products/productListView.html",//gọi đến template đã tách
             controller: "productListController"// vao đc homeView.html nó tự động nhận đc homeController , 
             //nhưng cần khai báo 1 file có tên zi
-        }).state('product_add', {
-            url: "/product_add",//url thực tế ở trên trang
+        }).state('add_product', {
+            url: "/add_product",//url thực tế ở trên trang
             templateUrl: "/app/components/products/productAddView.html",//gọi đến template đã tách
             controller: "productAddController"// vao đc homeView.html nó tự động nhận đc homeController , 
+            //nhưng cần khai báo 1 file có tên zi
+        }).state('edit_product', {
+            url: "/edit_product/:id",//url thực tế ở trên trang
+            templateUrl: "/app/components/products/productEditView.html",//gọi đến template đã tách
+            controller: "productEditController"// vao đc homeView.html nó tự động nhận đc homeController , 
             //nhưng cần khai báo 1 file có tên zi
         });
     }
