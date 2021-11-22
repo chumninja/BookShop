@@ -11,8 +11,18 @@
         }
         $scope.ckeditorOptions = {
             language: 'vi',
-            height:'200px'
+            height:'100px'
         }
+        //ChooseImage
+        $scope.ChooseImages = ChooseImages;
+        function ChooseImages() {
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (fileUrl) {
+                $scope.product.Images = fileUrl;
+            }
+            finder.popup();
+        }
+        
         $scope.AddProduct = AddProduct;
         $scope.GetSeoTitle = GetSeoTitle;
         function GetSeoTitle() {

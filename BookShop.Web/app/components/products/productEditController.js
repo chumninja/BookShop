@@ -9,13 +9,23 @@
         }
         $scope.ckeditorOptions = {
             language: 'vi',
-            height: '200px'
+            height: '100px'
         }
         $scope.EditProduct = EditProduct;
         $scope.GetSeoTitle = GetSeoTitle;
         function GetSeoTitle() {
             $scope.product.Alias = commonService.getSeotitle($scope.product.NameProduct);
         }
+        //ChooseImage
+        $scope.ChooseImages = ChooseImages;
+        function ChooseImages() {
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (fileUrl) {
+                $scope.product.Images = fileUrl;
+            }
+            finder.popup();
+        }
+
         //get details
         function loadproductDetail() {
             apiService.get('/api/product/getbyid/' + $stateParams.id,null, function (result) {
