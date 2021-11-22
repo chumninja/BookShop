@@ -45,8 +45,8 @@
                         <div class="form-group">
                             <label>Tên Sản Phẩm <span class="text-danger">(*)</span></label>
                             <input type="text" required name="name" ng-maxlength="256" ng-change="GetSeoTitle()" ng-model="product.NameProduct" class="form-control">
-                            <span ng-show="frmAddProduct.name.$invalid" class="text-danger">Phải nhập tên danh mục.</span>
-                            <span ng-show="frmEditproduct.name.$error.maxlength" class="text-danger">Độ dài tên danh mục không quá 256 ký tự.</span>
+                            <span ng-show="frmAddProduct.name.$invalid" class="text-danger">Phải nhập tên sản phẩm.</span>
+                            <span ng-show="frmEditproduct.name.$error.maxlength" class="text-danger">Độ dài tên sản phẩm không quá 256 ký tự.</span>
                         </div>
 
                         <div class="form-group">
@@ -79,7 +79,21 @@
                             </div>
                         </div> <!-- Image -->
 
-                        
+                        <!-- MoreImage -->
+                        <div class="form-group">
+                            <label>Thêm ảnh</label>
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <label class="custom-file-label" ng-model="product.Images" for="exampleInputFile" ng-click="ChooseMoreImages()"></label>
+                                </div>
+                            </div>
+                           <div>
+                               <ul class="col-md-9">
+                                   <li class="list-inline float-left" ng-repeat="img in moreImages"><img ng-src="{{img}}" width="100" height="100" /></li>
+                               </ul>
+                           </div>
+                        </div> <!-- MoreImage -->
+                       
 
                     </div>
                     <div class="col-sm-3">
@@ -97,10 +111,7 @@
                             <input class="form-control" name="metadescription" ng-model="product.MetaDescription" rows="3" />
                         </div>
 
-                        <div class="form-group">
-                            <label>Số lượng</label>
-                            <input type="number" class="form-control" name="quantity" ng-model="product.Quantity" rows="3" />
-                        </div>
+                     
 
                         <label>Giá tiền</label>
                         <div class="input-group">
@@ -139,14 +150,7 @@
 
 
 
-                        <!--
-                             <div class="form-group">
-                            <div class="form-check">
-                                <label>Trạng Thái</label>
-                                <input class="form-control" rows="3" type="checkbox">
-                            </div>
-                        </div>
-                        -->
+                     
 
                         <div class="form-group">
                             <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">

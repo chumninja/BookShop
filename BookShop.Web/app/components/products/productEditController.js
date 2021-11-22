@@ -21,21 +21,39 @@
         function ChooseImages() {
             var finder = new CKFinder();
             finder.selectActionFunction = function (fileUrl) {
-                $scope.product.Images = fileUrl;
+                $scope.$apply(function () {
+                    $scope.product.Images = fileUrl;
+                });
             }
             finder.popup();
         }
-
+        //More Image
+        $scope.moreImages = [];
+        $scope.ChooseMoreImages = function () {
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (fileUrl) {
+                //bắt nó load ngay ko cần đợi 
+                $scope.$apply(function () {
+                    $scope.moreImages.push(fileUrl);
+                });
+            }
+            finder.popup();
+        }
         //get details
         function loadproductDetail() {
             apiService.get('/api/product/getbyid/' + $stateParams.id,null, function (result) {
                 $scope.product = result.data;//gán đối tượng lấy dc vào
+                if(result.data.MoreImage.length > 0)
+                {
+                    $scope.moreImages = JSON.parse($scope.product.MoreImage);
+                }
             }, function (error) {
                 notificationService.displayError(error.data)
             });
         }
 
         function EditProduct() {
+            $scope.product.MoreImage = JSON.stringify($scope.moreImages);//nó là 1 list nên cần chuyển về chuỗi..
             apiService.put('/api/product/edit_product', $scope.product, function (result) {
                 notificationService.displaySuccess(result.data.NameProduct + ' đã được cập nhật.');
                 $state.go('edit_product');// $state điều hướng của ui-route

@@ -94,6 +94,7 @@
                     pageSize: 5
                 }
             }
+            
             apiService.get('/api/product/getall', config, function (result) {
                 if (result.data.TotalCount == 0) {
                     notificationService.displayWarning('Không có bản ghi nào được tìm thấy.')
@@ -108,6 +109,7 @@
                 $scope.pagesCount = result.data.TotalPage;
                 $scope.totalCount = result.data.TotalCount;
                 $scope.totalCountCurrent = result.data.TotalCountCunrent;
+                
             }, function () {
                 console.log('load product category falied');
             });

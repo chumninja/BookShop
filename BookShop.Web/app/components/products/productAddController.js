@@ -11,7 +11,7 @@
         }
         $scope.ckeditorOptions = {
             language: 'vi',
-            height:'100px'
+            height: '100px'
         }
         //ChooseImage
         $scope.ChooseImages = ChooseImages;
@@ -19,16 +19,34 @@
             var finder = new CKFinder();
             finder.selectActionFunction = function (fileUrl) {
                 $scope.product.Images = fileUrl;
+                $scope.$apply(function () {
+                    $scope.product.Images = fileUrl;
+                });
             }
             finder.popup();
         }
+        //More Image
+        $scope.moreImages = [];
+        $scope.ChooseMoreImages = function () {
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (fileUrl) {
+                //bắt nó load ngay ko cần đợi 
+                $scope.$apply(function () {
+                    $scope.moreImages.push(fileUrl);
+                });
+            }
+            finder.popup();
+        }
+
         
-        $scope.AddProduct = AddProduct;
         $scope.GetSeoTitle = GetSeoTitle;
         function GetSeoTitle() {
             $scope.product.Alias = commonService.getSeotitle($scope.product.NameProduct);
         }
+
+        $scope.AddProduct = AddProduct;
         function AddProduct() {
+            $scope.product.MoreImage = JSON.stringify($scope.moreImages);//nó là 1 list nên cần chuyển về chuỗi..
             apiService.post('/api/product/create_product', $scope.product, function (result) {
                 notificationService.displaySuccess(result.data.NameProduct + ' đã được thêm mới.');
                 $state.go('add_product');// $state điều hướng của ui-route
