@@ -91,6 +91,10 @@
     <Compile Include="Migrations\202111171753094_Chankey.designer.cs">
       <DependentUpon>202111171753094_Chankey.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202111220856552_addtag.cs" />
+    <Compile Include="Migrations\202111220856552_addtag.designer.cs">
+      <DependentUpon>202111220856552_addtag.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ErrorRepository.cs" />
@@ -129,6 +133,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202111171753094_Chankey.resx">
       <DependentUpon>202111171753094_Chankey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111220856552_addtag.resx">
+      <DependentUpon>202111220856552_addtag.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

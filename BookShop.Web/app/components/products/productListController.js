@@ -14,7 +14,7 @@
         //phuong thuc delete.
         $scope.deleteProduct = deleteProduct;
         function deleteProduct(id) {
-            $ngBootbox.confirm('Bạn có muốn xóa danh mục này ?').then(function () {
+            $ngBootbox.confirm('Bạn có muốn xóa sản phẩm này. ?').then(function () {
                 //then mang 2 phương thức là No và yes.
                 var config = {
                     params: {

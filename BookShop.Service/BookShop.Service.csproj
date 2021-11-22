@@ -48,6 +48,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BookShop.Common\BookShop.Common.csproj">
+      <Project>{88524322-551b-4614-9e5c-19319b9498d3}</Project>
+      <Name>BookShop.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BookShop.Data\BookShop.Data.csproj">
       <Project>{42235E93-3834-4CD6-B231-82FB8AC21B8F}</Project>
       <Name>BookShop.Data</Name>

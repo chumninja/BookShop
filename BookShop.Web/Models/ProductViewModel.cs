@@ -40,7 +40,7 @@ namespace BookShop.Web.Models
 
         public int? ViewCount { set; get; }
 
-      
+        public string Tags { set; get; }
         public virtual ProductCategoryViewModel ProductCategory { set; get; }
         public DateTime? CreateDate { set; get; }
         public string CreateBy { set; get; }

@@ -65,6 +65,8 @@ namespace BookShop.Web.Infastucture.Extension
             product.MoreImage = productVM.MoreImage;
             product.Images = productVM.Images;
             product.HomeFlag = productVM.HomeFlag;
+            product.ViewCount = productVM.ViewCount;
+            product.Tags = productVM.Tags;
             product.CreateDate = productVM.CreateDate;
             product.CreateBy = productVM.CreateBy;
             product.UpdateDate = productVM.UpdateDate;
