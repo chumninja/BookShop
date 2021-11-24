@@ -1,43 +1,30 @@
-﻿<!-- Content Header (Page header) -->
+﻿﻿  <!-- Content Header (Page header) -->
 <section class="content-header">
-    <div class="container-fluid">
-        <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1>Cập nhật danh mục: {{productCategory.NameCategory}}</h1>
-            </div>
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Trang Chủ</a></li>
-                    <li class="breadcrumb-item"><a href="#">Danh mục sản phẩm</a></li>
-                    <li class="breadcrumb-item active">Cập nhật danh mục</li>
-                </ol>
-            </div>
-        </div>
-    </div><!-- /.container-fluid -->
+    <h1>
+        Cập nhật sản phẩm
+
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+        <li><a href="#">Danh Mục Thể Loại</a></li>
+        <li><a ui-sref="products">Danh sách</a></li>
+        <li class="active">Cập nhật Danh Mục Thể loại</li>
+    </ol>
 </section>
 
 <!-- Main content -->
 <section class="content">
-
-    <!-- Default box -->
-    <div class="card">
-        <div class="card-header">
-            <h3 class="card-title">Nhập thông tin danh mục</h3>
-            <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                    <i class="fas fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-                    <i class="fas fa-times"></i>
-                </button>
-
-                <a class="btn btn-tool" ui-sref="product_categories" title="Quay lại"><i class="fas fa-arrow-left"></i></a>
+    <div class="box box-default">
+        <div class="box-header with-border">
+            <h3 class="box-title">Cập nhật thông tin cho thể loại: {{productCategory.NameCategory}}</h3>
+            <div class="box-tools pull-right">
+                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                <a class="btn btn-box-tool" ui-sref="product_categories" title="Quay lại"><i class="fas fa-arrow-left"></i></a>
             </div>
+        </div><!-- /.box-header -->
 
-        </div>
-
-
-        <div class="card-body">
+        <div class="box-body">
             <form novalidate name="frmEditProductCategory" role="form" ng-submit="EditProductCategory()">
                 <div class="row">
                     <div class="col-sm-9">
@@ -59,8 +46,8 @@
                             <textarea class="form-control" name="description" required ng-model="productCategory.Description" rows="3"></textarea>
                             <span ng-show="frmEditProductCategory.description.$invalid" class="text-danger">Phải nhập thông tin mô tả.</span>
                         </div>
-                       
-                      
+
+
                         <div class="form-group">
                             <label>Meta Keyword</label>
                             <textarea class="form-control" name="metakeyword" ng-model="productCategory.MetaKeyWord" rows="3"></textarea>
@@ -79,12 +66,15 @@
                         </div>
                         <div class="form-group">
                             <label>Danh Mục cha</label>
-                            <select class="custom-select" name="parentID" ng-model="productCategory.ParentID"
+
+                            <select class="form-control" name="parentID" ng-model="productCategory.ParentID"
                                     ng-options="option.ID as option.NameCategory for option in parentCategories">
                                 <option value="">Chọn danh mục</option>
                             </select>
                             <input type="hidden" name="parentID" ng-model="productCategory.ParentID" />
+  
                         </div>
+
 
 
 
@@ -115,10 +105,14 @@
 
                     </div>
                 </div>
+
             </form>
         </div>
-    </div>
-    <!-- /.card -->
+
+    </div><!-- /.box -->
+
+
+
+
 
 </section>
-<!-- /.content -->
