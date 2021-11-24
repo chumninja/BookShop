@@ -6,6 +6,11 @@
     config.$inject = ['$stateProvider', '$urlRouterProvider']
     function config($stateProvider, $urlRouterProvider) {
         $stateProvider
+            .state('base', {
+                url: "",
+                templateUrl: "/app/Shared/views/baseView.html",
+                abstract: true
+            })
            .state('login', {
                url: "/login",
                templateUrl: "/app/components/LoginAdmin/loginView.html",
@@ -13,7 +18,7 @@
            })
            .state('home', {
                url: "/admin",
-               
+               parent: 'base',
                templateUrl: "/app/components/home/homeView.html",
                controller: "homeController"
            });

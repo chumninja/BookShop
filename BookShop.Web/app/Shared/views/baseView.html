@@ -1,5 +1,4 @@
-﻿
-
+﻿<div class="wrapper">
     <!-- Preloader -->
     <div class="preloader flex-column justify-content-center align-items-center">
         <img class="animation__shake" src="/Assets/admin/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
@@ -180,42 +179,41 @@
                     <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
                     <li class="nav-item menu-open">
-                        <a href="#" class="nav-link active">
-                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-angle-left right"></i>
                             <p>
-                                Dashboard
+                                Trang chủ
                                 <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+
+                    </li>
+                   
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-copy"></i>
+                            <p>
+                                Sản phẩm
+                                <i class="fas fa-angle-left right"></i>
+                                <span class="badge badge-info right">6</span>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="./index.html" class="nav-link active">
+                                <a ui-sref="products" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Dashboard v1</p>
+                                    <p>Sản phẩm</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="./index2.html" class="nav-link">
+                                <a ui-sref="product_categories" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Dashboard v2</p>
+                                    <p>Danh mục sản phẩm</p>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="./index3.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Dashboard v3</p>
-                                </a>
-                            </li>
+
+
                         </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a href="pages/widgets.html" class="nav-link">
-                            <i class="nav-icon fas fa-th"></i>
-                            <p>
-                                Widgets
-                                <span class="right badge badge-danger">New</span>
-                            </p>
-                        </a>
                     </li>
                 </ul>
             </nav>
@@ -228,8 +226,8 @@
     <div class="content-wrapper">
         <!-- Main content -->
         <section class="content">
-            <div class="container-fluid">
-               <div ui-view></div>
+            <div class="container-fluid" ui-view>
+                
                 <!-- /.row (main row) -->
             </div><!-- /.container-fluid -->
         </section>
@@ -248,3 +246,4 @@
         <!-- Control sidebar content goes here -->
     </aside>
 
+</div>
